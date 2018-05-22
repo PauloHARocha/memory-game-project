@@ -38,7 +38,8 @@ h1 {
  */
 
 .deck {
-    width: 600px;
+    max-width: 600px;
+    width: 100%;
     min-height: 620px;
     background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
     padding: 32px;
