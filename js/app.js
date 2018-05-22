@@ -14,8 +14,6 @@ function shuffle(array) {
 }
 
 // Timer from https://jsfiddle.net/Daniel_Hug/pvk6p/
-
-
 function add() {
     seconds++;
     if (seconds >= 60) {
@@ -34,6 +32,7 @@ function add() {
     $('.time').text(timeText);
     timer();
 }
+
 function timer() {
     t = setTimeout(add, 1000);
 }
@@ -53,7 +52,6 @@ function open_card(card){
  }
 
  function check_open_cards(card_one, card_two){
-
    if(card_one.children().attr('class') == card_two.children().attr('class')){
      card_match(card_one, card_two);
    }else{
@@ -85,12 +83,8 @@ function open_card(card){
  }
 
  function update_stars(){
-   if(moves % 10 == 0){
+   if(moves % 10 == 0 && stars > 1){
       stars--;
-   }
-   if(stars == -1){
-     loser();
-   }else{
      $('.stars').children().eq(stars).children().attr('class','fa fa-star-o');
    }
  }
@@ -100,14 +94,6 @@ function open_card(card){
    $('.ending_status').text(`Com ${moves} movimentos, ${stars} estrelas
      e com o tempo total de ${timeText}!`);
    $('.ending_message').text('Muito bem!');
-   $('.container').toggleClass('ending');
- }
-
- function loser(){
-   $('.ending_title').text('Acabaram suas estrelas, tente novamente!');
-   $('.ending_status').text(`Com ${moves} movimentos e
-     ${open_cards.length/2} acertos e com o tempo total de ${timeText}`);
-   $('.ending_message').text('Na próxima você consegue!');
    $('.container').toggleClass('ending');
  }
 
