@@ -97,16 +97,16 @@ function open_card(card){
 
  function winner(){
    $('.ending_title').text('Parabéns, você venceu!');
-   $('.ending_status').text('Com ' + moves + ' movimentos e '
-   + stars + ' estrelas!');
+   $('.ending_status').text(`Com ${moves} movimentos, ${stars} estrelas
+     e com o tempo total de ${timeText}!`);
    $('.ending_message').text('Muito bem!');
    $('.container').toggleClass('ending');
  }
 
  function loser(){
    $('.ending_title').text('Acabaram suas estrelas, tente novamente!');
-   $('.ending_status').text('Com ' + moves + ' movimentos e '
-   + open_cards.length/2 + ' acertos.');
+   $('.ending_status').text(`Com ${moves} movimentos e
+     ${open_cards.length/2} acertos e com o tempo total de ${timeText}`);
    $('.ending_message').text('Na próxima você consegue!');
    $('.container').toggleClass('ending');
  }
@@ -114,7 +114,7 @@ function open_card(card){
  function restart(){
    open_cards = [];
    moves = 0;
-   stars = 5;
+   stars = 3;
    $('.deck').children().removeClass('open show match');
    $('.stars').find('i').attr('class','fa fa-star');
    $('.moves').text(0);
