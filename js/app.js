@@ -13,6 +13,42 @@ function shuffle(array) {
     return array;
 }
 
+
+let seconds = 0, minutes = 0, hours = 0, t, timeText;
+
+function add() {
+    seconds++;
+    if (seconds >= 60) {
+        seconds = 0;
+        minutes++;
+        if (minutes >= 60) {
+            minutes = 0;
+            hours++;
+        }
+    }
+
+    timeText = (hours ? (hours > 9 ? hours : "0" + hours) : "00") + ":" +
+    (minutes ? (minutes > 9 ? minutes : "0" + minutes) : "00") + ":" +
+    (seconds > 9 ? seconds : "0" + seconds);
+
+    $('.time').text(timeText);
+    timer();
+}
+function timer() {
+    t = setTimeout(add, 1000);
+}
+timer();
+
+// /* Start button */
+// start.onclick = timer;
+//
+// /* Clear button */
+// clear.onclick = function() {
+//     h1.textContent = "00:00:00";
+//     seconds = 0; minutes = 0; hours = 0;
+// }
+
+
 function open_card(card){
    card.toggleClass('open show');
    open_cards.push(card);
@@ -91,6 +127,8 @@ function open_card(card){
    $('.deck').children().removeClass('open show match');
    $('.stars').find('i').attr('class','fa fa-star');
    $('.moves').text(0);
+   $('.time').text("00:00:00");
+   seconds = 0; minutes = 0; hours = 0;
    shuffle_cards();
  }
 
