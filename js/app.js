@@ -13,8 +13,8 @@ function shuffle(array) {
     return array;
 }
 
+// Timer from https://jsfiddle.net/Daniel_Hug/pvk6p/
 
-let seconds = 0, minutes = 0, hours = 0, t, timeText;
 
 function add() {
     seconds++;
@@ -37,17 +37,6 @@ function add() {
 function timer() {
     t = setTimeout(add, 1000);
 }
-timer();
-
-// /* Start button */
-// start.onclick = timer;
-//
-// /* Clear button */
-// clear.onclick = function() {
-//     h1.textContent = "00:00:00";
-//     seconds = 0; minutes = 0; hours = 0;
-// }
-
 
 function open_card(card){
    card.toggleClass('open show');
@@ -96,7 +85,9 @@ function open_card(card){
  }
 
  function update_stars(){
-   stars--;
+   if(moves % 10 == 0){
+      stars--;
+   }
    if(stars == -1){
      loser();
    }else{
@@ -158,13 +149,16 @@ $('.ending_restart').on('click',function(){
 //Inicio
 let open_cards = []
 let moves = 0;
-let stars = 5;
+let stars = 3;
 
 let cards = $('.card').children();
 let cards_class = []
+
+let seconds = 0, minutes = 0, hours = 0, t, timeText;
 
 cards.each(function(){
   cards_class.push($(this).attr('class'));
 });
 
 shuffle_cards();
+timer();
